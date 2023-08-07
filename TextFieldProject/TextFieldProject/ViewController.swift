@@ -23,6 +23,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = UIColor.gray
         textField.keyboardType = .emailAddress
         textField.clearButtonMode = .always
+        textField.becomeFirstResponder()
+    }
+    
+    // 뷰컨트롤러에 있는 화면의 탭을 감지하는 메서드
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        // textField.resignFirstResponder()
     }
     
     // 사용자가 텍스트 필드의 텍스트 편집을 시작하는 작업을 수행할 때 이 메서드를 호출 (편집 허락 여부 판단)
@@ -69,7 +76,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func doneButtonTapped(_ sender: UIButton) {
-        
+        textField.resignFirstResponder()
     }
     
 }
