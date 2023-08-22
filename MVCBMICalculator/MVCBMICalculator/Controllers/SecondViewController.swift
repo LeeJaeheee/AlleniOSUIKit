@@ -13,9 +13,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var adviceLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
-    var bmi: Double?
-    var bmiColor: UIColor?
-    var adviceString: String?
+    var bmi: BMI?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +29,11 @@ class SecondViewController: UIViewController {
         backButton.clipsToBounds = true
         
         guard let bmi = bmi else { return }
-        bmiNumberLabel.text = String(bmi)
+        bmiNumberLabel.text = String(bmi.value)
         
         // 둘다 어차피 옵셔널 타입이므로 바인딩 필요 없음
-        adviceLabel.text = adviceString
-        bmiNumberLabel.backgroundColor = bmiColor
+        adviceLabel.text = bmi.advice
+        bmiNumberLabel.backgroundColor = bmi.matchColor
     }
 
     @IBAction func backButtonTapped(_ sender: UIButton) {
